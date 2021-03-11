@@ -1,0 +1,32 @@
+{
+    "_id" : "1010101010",
+    "id" : "1010101010",
+    "first_name" : "Wachira",
+    "last_name" : "Long",
+    "email" : "benten@gmail.com",
+    "gender" : "male",
+    "age" : 80,
+    "picture_url": "https://pbs.twimg.com/profile_images/1113138729558790144/xnlFYXWF.jpg",
+    "height": 180,
+    "weight": 74.2,
+    "hobby": ["fking", "shopping"],
+    "country" : "thailand",
+    "city" : "bangkok"
+}
+
+
+{
+    "_id": "5630252489",
+    "id": "5630252489",
+    "first_name" : "jimmie",
+    "last_name" : "momay",
+    "email" : "jimmie.m@gmail.com",
+    "gender" : "male",
+    "age" : 30,
+    "picture_url": "https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.0-9/75584977_3153357698043847_8568402594796795856_o.jpg?_nc_cat=106&ccb=2&_nc_sid=8bfeb9&_nc_eui2=AeFvTBEOsS6gMRTtCBTKzI6q6uCDDSyGyHHq4IMNLIbIcez-vbmtqXbyZyNtSAyBjujVRhQslN2wE_r9w9si3YrT&_nc_ohc=gxmrx4uI-vQAX9ecX0s&_nc_ht=scontent.fbkk13-2.fna&oh=f24ed1c54e0e74f3b2e4216498e12c43&oe=602D573A",
+    "height": 180,
+    "weight": 68.2,
+    "hobby": ["jogging", "gaming"],
+    "country" : "thailand",
+    "city" : "bangkok"
+}
