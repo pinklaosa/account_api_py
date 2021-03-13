@@ -1,6 +1,6 @@
 import pymongo
 
-from model.student import createStudentModel, updateStudentModel
+from model.account import createAccountModel, updateAccountModel
 
 
 class MongoDB:
@@ -26,35 +26,44 @@ class MongoDB:
         db = client[self.db]
         self.connection = db[self.collection]
 
+    # start function of api
+
+    # This is function get data from mongoDB it's name "find"
     def find(self, sort_by, order):
         mongo_results = self.connection.find({})
         if sort_by is not None and order is not None:
             mongo_results.sort(sort_by, self._get_sort_by(order))
-
         return list(mongo_results)
 
     def _get_sort_by(self, sort: str) -> int:
         return pymongo.DESCENDING if sort == "desc" else pymongo.ASCENDING
 
-    def find_one(self, id):
-        return self.connection.find_one({"_id": id})
+    # This is function get method data for username that using
+    def find_one(self, username):
+        return self.connection.find_one({"_id": username})
 
-    def create(self, student: createStudentModel):
-        student_dict = student.dict(exclude_unset=True)
+    # This is function post method data for insert data
+    def create(self, account: createAccountModel):
+        account_dict = account.dict(exclude_unset=True)
 
-        insert_dict = {**student_dict, "_id": student_dict["id"]}
+        insert_dict = {**account_dict, "_id": account_dict["username"]}
 
         inserted_result = self.connection.insert_one(insert_dict)
-        student_id = str(inserted_result.inserted_id)
+        account_id = str(inserted_result.inserted_id)
 
-        return student_id
+        return account_id
 
-    def update(self, student_id, student: updateStudentModel):
+    # This is function patch method for updata data
+    def update(self, username, update_account: updateAccountModel):
         updated_result = self.connection.update_one(
-            {"id": student_id}, {"$set": student.dict(exclude_unset=True)}
+            # query
+            {"_id": username},
+            # set value
+            {"$set": update_account.dict(exclude_unset=True)},
         )
-        return [student_id, updated_result.modified_count]
+        return [username, updated_result.modified_count]
 
-    def delete(self, student_id):
-        deleted_result = self.connection.delete_one({"id": student_id})
-        return [student_id, deleted_result.deleted_count]
+    # This is function delete method for delete data
+    def delete(self, username):
+        deleted_result = self.connection.delete_one({"username": username})
+        return [username, deleted_result.deleted_count]
